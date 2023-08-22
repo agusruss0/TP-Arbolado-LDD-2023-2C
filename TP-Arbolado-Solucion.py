@@ -58,7 +58,7 @@ def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
             alturas.append(float(arbol['altura_tot']))
     return alturas
 
-#5
+
 def promedio_max(alturas: list[float])->list[float]:
     max = 0
     suma = 0
