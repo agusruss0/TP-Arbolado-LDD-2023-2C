@@ -12,7 +12,7 @@ path_csv = "arbolado-en-espacios-verdes.csv"
 #Ejercicios
 
 #1
-def leer_parque(archivo: csv, parque: str)->list[dict]:
+def leer_parque(archivo: csv, parque: str):
     lista_arboles = []
     with open(archivo, 'rt', encoding='utf-8') as f:
         filas = csv.reader(f)
@@ -34,7 +34,7 @@ def leer_parque(archivo: csv, parque: str)->list[dict]:
             ejemplares.append(arbol['nombre_com'])
     return ejemplares
 """
-def especies(lista_arboles: list[dict])->list:
+def especies(lista_arboles: list)->list:
     ejemplares = []
     for arbol in lista_arboles:
         if not arbol['nombre_com'] in ejemplares:
@@ -45,7 +45,7 @@ def especies(lista_arboles: list[dict])->list:
 #print(especies(leer_parque(path_csv, "GENERAL PAZ")))
 
 #3
-def contar_ejemplares(lista_arboles: list[dict])->dict:
+def contar_ejemplares(lista_arboles: list)->dict:
     cant_ejemplares = {}
     for arbol in lista_arboles:
         if not arbol['nombre_com'] in cant_ejemplares:
@@ -54,10 +54,11 @@ def contar_ejemplares(lista_arboles: list[dict])->dict:
             cant_ejemplares[arbol['nombre_com']]+=1
     return cant_ejemplares
 
-print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+#print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+
 
 #4
-def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
+def obtener_alturas(lista_arboles: list, especie: str)->list:
     alturas = []
     for arbol in lista_arboles:
         if arbol['nombre_com']==especie:
@@ -65,7 +66,7 @@ def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
     return alturas
 
 
-def promedio_max(alturas: list[float])->list[float]:
+def promedio_max(alturas: list)->list:
     max = 0
     suma = 0
     for altura in alturas:
@@ -81,15 +82,15 @@ print(promedio_max(obtener_alturas(leer_parque(path_csv,"CENTENARIO"), 'Jacarand
 
 
 #5
-def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
+def obtener_inclinaciones(lista_arboles:list, especie: str)-> list:
     inclinaciones = []
     for arbol in lista_arboles:
         if arbol["nombre_com"] == especie:
-            inclinaciones.append(arbol["inclinacio"])
+            inclinaciones.append(float(arbol["inclinacio"]))
     return inclinaciones
 
 #6
-def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
+def especimen_mas_inclinado(lista_de_arboles)-> list:
     lista_especies = especies(lista_de_arboles)
     especie_max = [str, 0.0]
     for i in lista_especies:
@@ -101,4 +102,5 @@ def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
         if inclinacion_max > especie_max[1]:
             especie_max[0], especie_max[1] = i, inclinacion_max
     return especie_max
-#print(especimen_mas_inclinado())
+
+#print(especimen_mas_inclinado(leer_parque(path_csv,"CENTENARIO")))
