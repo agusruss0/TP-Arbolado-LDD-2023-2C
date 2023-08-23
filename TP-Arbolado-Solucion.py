@@ -55,7 +55,6 @@ def contar_ejemplares(lista_arboles: list[dict])->dict:
 
 #print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
 
-
 #4
 def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
     alturas = []
