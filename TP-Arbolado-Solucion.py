@@ -80,6 +80,14 @@ print(promedio_max(obtener_alturas(leer_parque(path_csv,"ANDES, LOS"), 'Jacarand
 print(promedio_max(obtener_alturas(leer_parque(path_csv,"CENTENARIO"), 'Jacarandá')))"""
 
 
+#5
+def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
+    inclinaciones = []
+    for arbol in lista_arboles:
+        if arbol["nombre_com"] == especie:
+            inclinaciones.append(arbol["inclinacio"])
+    return inclinaciones
+
 #6
 def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
     lista_especies = especies(lista_de_arboles)
