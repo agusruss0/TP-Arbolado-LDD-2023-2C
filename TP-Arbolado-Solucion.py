@@ -40,7 +40,7 @@ def especies(lista_arboles: list[dict])->list:
         if not arbol['nombre_com'] in ejemplares:
             ejemplares.append(arbol['nombre_com'])
     return ejemplares
-   
+
 
 #print(especies(leer_parque(path_csv, "GENERAL PAZ")))
 
@@ -54,7 +54,7 @@ def contar_ejemplares(lista_arboles: list[dict])->dict:
             cant_ejemplares[arbol['nombre_com']]+=1
     return cant_ejemplares
 
-print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+#print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
 
 #4
 def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
@@ -85,7 +85,7 @@ def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
     inclinaciones = []
     for arbol in lista_arboles:
         if arbol["nombre_com"] == especie:
-            inclinaciones.append(arbol["inclinacio"])
+            inclinaciones.append(float(arbol["inclinacio"]))
     return inclinaciones
 
 #6
@@ -101,4 +101,33 @@ def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
         if inclinacion_max > especie_max[1]:
             especie_max[0], especie_max[1] = i, inclinacion_max
     return especie_max
-#print(especimen_mas_inclinado())
+
+#print(especimen_mas_inclinado(leer_parque(path_csv,"CENTENARIO")))
+
+
+
+import pandas as pd
+import numpy as np
+
+data_arboles_parques = pd.read_csv("arbolado-en-espacios-verdes.csv")
+
+#df con jacarandas
+#df con palos borrachos
+#cantidad de arboles
+#altura max min prom
+#diametro max min prom
+print(df_jacaranda)
+
+df_palo_borracho = data_arboles_parques[data_arboles_parques["nombre_com"] == "Palo borracho"]
+print(df_palo_borracho)
+especies = data_arboles_parques["nombre_com"].unique()
+#print(especies)
+
+def data_jacaranda(df):
+    df_jacaranda = data_arboles_parques[data_arboles_parques["nombre_com"] == "Jacarandá"]
+    cant_arboles = len(df_jacaranda)
+    datos_jacaranda = (df_jacaranda["altuta_tot"].max(), 
+                       df_jacaranda["altuta_tot"].min(), 
+                       df_jacaranda["altuta_tot"].sum()/cant_arboles)
+def data_palo_borracho():
+    pass
