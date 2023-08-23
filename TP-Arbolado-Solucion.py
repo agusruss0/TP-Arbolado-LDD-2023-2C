@@ -88,14 +88,14 @@ def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
             inclinaciones.append(float(arbol["inclinacio"]))
     return inclinaciones
 
-print(obtener_inclinaciones(leer_parque(path_csv,'CHACABUCO'),'Jacarandá'))
+#print(obtener_inclinaciones(leer_parque(path_csv,'CHACABUCO'),'Jacarandá'))
 
 #6
-def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
-    lista_especies = especies(lista_de_arboles)
+def especimen_mas_inclinado(lista_arboles: list[dict])-> list[str,float]:
+    lista_especies = especies(lista_arboles)
     especie_max = [str, 0.0]
     for i in lista_especies:
-        inclinaciones = obtener_inclinaciones(lista_de_arboles, i)
+        inclinaciones = obtener_inclinaciones(lista_arboles, i)
         inclinacion_max = 0
         for e in inclinaciones:
             if e > inclinacion_max:
@@ -107,7 +107,7 @@ def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
 #print(especimen_mas_inclinado(leer_parque(path_csv,"CHACABUCO")))
 
 #7
-def especie_promedio_mas_inclinada(lista_arboles : list) -> dict:
+def especie_promedio_mas_inclinada(lista_arboles : list[dict]) -> dict:
     '''A partir de una lista de arboles devuelve la especie que tiene mas grados de inclinacion en promedio'''
     promedio_mas_alto = 0
     retval = {}
@@ -119,4 +119,4 @@ def especie_promedio_mas_inclinada(lista_arboles : list) -> dict:
             promedio_mas_alto = avg
     return retval
 
-# print(especie_promedio_mas_inclinada(leer_parque(path_csv,"ANDES, LOS")))
+print(especie_promedio_mas_inclinada(leer_parque(path_csv,"ANDES, LOS")))
