@@ -18,15 +18,14 @@ def leer_parque(archivo: csv, parque: str)->list[dict]:
         filas = csv.reader(f)
         encabezado = next(filas)
         for fila in filas:
-            if fila[10]==parque:
+            if fila[10] == parque:
                 lista_arboles.append(dict(zip(encabezado,fila)))
-
     return lista_arboles
 
 #print(leer_parque(path_csv, "GENERAL PAZ"))
 
 #2
-def especies(lista_arboles: list[dict])->list:
+"""def especies(lista_arboles: list[dict])->list:
     ejemplares = []
     for arbol in lista_arboles:
         if arbol['nombre_com'] in ejemplares:
@@ -34,7 +33,14 @@ def especies(lista_arboles: list[dict])->list:
         else:
             ejemplares.append(arbol['nombre_com'])
     return ejemplares
-
+"""
+def especies(lista_arboles: list[dict])->list:
+    ejemplares = []
+    for arbol in lista_arboles:
+        if not arbol['nombre_com'] in ejemplares:
+            ejemplares.append(arbol['nombre_com'])
+    return ejemplares
+   
 
 #print(especies(leer_parque(path_csv, "GENERAL PAZ")))
 
@@ -42,13 +48,13 @@ def especies(lista_arboles: list[dict])->list:
 def contar_ejemplares(lista_arboles: list[dict])->dict:
     cant_ejemplares = {}
     for arbol in lista_arboles:
-        if arbol['nombre_com'] in cant_ejemplares:
-            cant_ejemplares[arbol['nombre_com']]+=1
-        else:
+        if not arbol['nombre_com'] in cant_ejemplares:
             cant_ejemplares[arbol['nombre_com']]=1
+        else:
+            cant_ejemplares[arbol['nombre_com']]+=1
     return cant_ejemplares
 
-#print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
 
 #4
 def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
