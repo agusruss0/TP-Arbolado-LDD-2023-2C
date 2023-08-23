@@ -78,3 +78,19 @@ def promedio_max(alturas: list[float])->list[float]:
 """print(promedio_max(obtener_alturas(leer_parque(path_csv,"GENERAL PAZ"), 'Jacarandá')))
 print(promedio_max(obtener_alturas(leer_parque(path_csv,"ANDES, LOS"), 'Jacarandá')))
 print(promedio_max(obtener_alturas(leer_parque(path_csv,"CENTENARIO"), 'Jacarandá')))"""
+
+
+#6
+def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
+    lista_especies = especies(lista_de_arboles)
+    especie_max = [str, 0.0]
+    for i in lista_especies:
+        inclinaciones = obtener_inclinaciones(lista_de_arboles, i)
+        inclinacion_max = 0
+        for e in inclinaciones:
+            if e > inclinacion_max:
+                inclinacion_max = e
+        if inclinacion_max > especie_max[1]:
+            especie_max[0], especie_max[1] = i, inclinacion_max
+    return especie_max
+#print(especimen_mas_inclinado())
