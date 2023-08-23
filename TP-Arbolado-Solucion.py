@@ -88,6 +88,8 @@ def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
             inclinaciones.append(float(arbol["inclinacio"]))
     return inclinaciones
 
+print(obtener_inclinaciones(leer_parque(path_csv,'CHACABUCO'),'Jacarandá'))
+
 #6
 def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
     lista_especies = especies(lista_de_arboles)
@@ -102,32 +104,4 @@ def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
             especie_max[0], especie_max[1] = i, inclinacion_max
     return especie_max
 
-#print(especimen_mas_inclinado(leer_parque(path_csv,"CENTENARIO")))
-
-
-
-import pandas as pd
-import numpy as np
-
-data_arboles_parques = pd.read_csv("arbolado-en-espacios-verdes.csv")
-
-#df con jacarandas
-#df con palos borrachos
-#cantidad de arboles
-#altura max min prom
-#diametro max min prom
-print(df_jacaranda)
-
-df_palo_borracho = data_arboles_parques[data_arboles_parques["nombre_com"] == "Palo borracho"]
-print(df_palo_borracho)
-especies = data_arboles_parques["nombre_com"].unique()
-#print(especies)
-
-def data_jacaranda(df):
-    df_jacaranda = data_arboles_parques[data_arboles_parques["nombre_com"] == "Jacarandá"]
-    cant_arboles = len(df_jacaranda)
-    datos_jacaranda = (df_jacaranda["altuta_tot"].max(), 
-                       df_jacaranda["altuta_tot"].min(), 
-                       df_jacaranda["altuta_tot"].sum()/cant_arboles)
-def data_palo_borracho():
-    pass
+#print(especimen_mas_inclinado(leer_parque(path_csv,"CHACABUCO")))
