@@ -54,7 +54,8 @@ def contar_ejemplares(lista_arboles: list[dict])->dict:
             cant_ejemplares[arbol['nombre_com']]+=1
     return cant_ejemplares
 
-print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+#print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
+
 
 #4
 def obtener_alturas(lista_arboles: list[dict], especie: str)->list[float]:
@@ -85,7 +86,7 @@ def obtener_inclinaciones(lista_arboles:list[dict], especie: str)-> list[float]:
     inclinaciones = []
     for arbol in lista_arboles:
         if arbol["nombre_com"] == especie:
-            inclinaciones.append(arbol["inclinacio"])
+            inclinaciones.append(float(arbol["inclinacio"]))
     return inclinaciones
 
 #6
@@ -101,4 +102,5 @@ def especimen_mas_inclinado(lista_de_arboles)-> list[str,float]:
         if inclinacion_max > especie_max[1]:
             especie_max[0], especie_max[1] = i, inclinacion_max
     return especie_max
-#print(especimen_mas_inclinado())
+
+#print(especimen_mas_inclinado(leer_parque(path_csv,"CENTENARIO")))
