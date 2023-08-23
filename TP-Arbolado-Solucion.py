@@ -53,7 +53,6 @@ def contar_ejemplares(lista_arboles: list[dict])->dict:
         else:
             cant_ejemplares[arbol['nombre_com']]+=1
     return cant_ejemplares
-
 print(contar_ejemplares(leer_parque(path_csv,"ANDES, LOS")))
 
 #4
