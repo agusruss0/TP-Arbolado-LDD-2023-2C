@@ -41,7 +41,6 @@ def especies(lista_arboles: list[dict])->list:
             ejemplares.append(arbol['nombre_com'])
     return ejemplares
    
-
 #print(especies(leer_parque(path_csv, "GENERAL PAZ")))
 
 #3
